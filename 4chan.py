@@ -24,6 +24,7 @@ filenames = []
 
 
 def md(dir):
+    """If 'dir' does not exist, create it."""
     if not os.path.exists(dir):
         print("Creating directory: " + dir + "\n")
         os.makedirs(dir)
@@ -49,6 +50,7 @@ def save_pic(url, save_path):
 
 
 def get_thread_url(board, thread_no):
+    """Return a fully formed tghread URL from parameters provided"""
     return "https://boards.4chan.org/" + board + "/thread/" + str(thread_no)
 
 for p in range(0, 9):
@@ -77,7 +79,7 @@ for thread in threads:
             downloading duplicates. The reason I RE-md5 it is the md5
             values from 4chan contain special characters, and I'm not
             sure what effect that would have on file paths. I probably
-            just don't understand hashlib well enough. 
+            just don't understand hashlib well enough.
             """
             fname = "https://i.4cdn.org/" + board + "/" + \
                 ((hashlib.md5(thread_data['posts'][post]['md5']
