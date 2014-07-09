@@ -39,7 +39,6 @@ def save_pic(url, save_path):
     to_save = (save_path + hashval + "." + file_ext)
     file_name = hashval + "." + file_ext
     if os.path.isfile(to_save):
-        #print(file_name + "\texists, skipping...")
         pass
     else:
         print(file_name + "\tdownloading...")
