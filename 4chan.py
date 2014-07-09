@@ -72,8 +72,9 @@ for thread in threads:
                 str(thread_data['posts'][post]['tim']) + \
                 thread_data['posts'][post]['ext']
             fname = "https://i.4cdn.org/" + board + "/" + \
-                (hashlib.md5(thread_data['posts'][post]['md5'].encode('UTF-8'))).hexdigest() + \
-                thread_data['posts'][post]['ext']
+                ((hashlib.md5(thread_data['posts'][post]['md5']
+                    .encode('UTF-8'))).hexdigest() +
+                    thread_data['posts'][post]['ext'])
             """
             May use fname instead of filename in future, this uses 4chan's
             MD5 value for the file in question. This may prevent us from
