@@ -70,15 +70,19 @@ for thread in threads:
             filename = "https://i.4cdn.org/" + board + "/" + \
                 str(thread_data['posts'][post]['tim']) + \
                 thread_data['posts'][post]['ext']
+
+            """
+            May use fname instead of filename in future, this uses 4chan's
+            MD5 value for the file in question. This may prevent us from
+            downloading duplicates. The reason I RE-md5 it is the md5
+            values from 4chan contain special characters, and I'm not
+            sure what effect that would have on file paths. I probably
+            just don't understand hashlib well enough. 
+            """
             fname = "https://i.4cdn.org/" + board + "/" + \
                 ((hashlib.md5(thread_data['posts'][post]['md5']
                     .encode('UTF-8'))).hexdigest() +
                     thread_data['posts'][post]['ext'])
-            """
-            May use fname instead of filename in future, this uses 4chan's
-            MD5 value for the file in question. This may prevent us from
-            downloading duplicates.
-            """
 
             filenames.append(filename)
 
